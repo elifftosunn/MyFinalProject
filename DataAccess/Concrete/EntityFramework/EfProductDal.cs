@@ -13,13 +13,11 @@ namespace DataAccess.Concrete.EntityFramework
     {
         List<Product> _products;
         public void Add(Product entity)
-        {
-            // (using) => IDispossable pattern implementation c#
-            //using içine yazılan nesneler anında bellekten atılıyor. Yani (NorthwindContext context=new NorthwindContext()) işi bitince bellekten atılacak.
+        {  
             using (NorthwindContext context=new NorthwindContext())
             {
-                var addedEntity = context.Entry(entity); // Bu veri kaynağından(benim  gönderdiğim Productan bir tane nesneyi eşleştir.Ama ekleme olduğundan herhangi bir şeyi eşleştirmicek direk eklicek.)
-                addedEntity.State = EntityState.Added; //ekleme olarak durumu set et, sonra da ekle
+                var addedEntity = context.Entry(entity); 
+                addedEntity.State = EntityState.Added; 
                 context.SaveChanges();
             }
         }
@@ -38,7 +36,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (NorthwindContext context=new NorthwindContext())
             {
-                return context.Set<Product>().SingleOrDefault(filter); //tek data getiriyor
+                return context.Set<Product>().SingleOrDefault(filter); 
             }
         }
 
@@ -46,7 +44,6 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (NorthwindContext context =new NorthwindContext())
             {
-                // context.Set<Product>().ToList() => select * from products
                 return filter == null ? context.Set<Product>().ToList() : context.Set<Product>().Where(filter).ToList();
             }
         }

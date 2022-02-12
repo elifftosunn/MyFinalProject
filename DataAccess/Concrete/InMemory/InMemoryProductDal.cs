@@ -8,11 +8,10 @@ using System.Text;
 
 namespace DataAccess.Concrete.InMemory
 {
-    //InMemoryProductDal => IProductDal'ın bir implementasyonudur.
     public class InMemoryProductDal : IProductDal
     {
         List<Product> _products;
-        public InMemoryProductDal()//(constructor)BELLEKTE referans aldığı zaman çalışacak olan koddur.
+        public InMemoryProductDal()
         {
             _products = new List<Product> {
                 new Product{ ProductId=1,CategoryId=1,ProductName="Bardak",UnitPrice=15,UnitsInStock=15},
@@ -61,20 +60,4 @@ namespace DataAccess.Concrete.InMemory
             throw new NotImplementedException();
         }
     }
-    // _products.Remove(product); => bu şekilde listeden silinmemesinin nedeni referans tipli olması yani referans tipi referans tip üzerinden silinir. Biz böyle yapınca arayüzden gönderiyoruz ve referansları farklı olduğundan kesinlikle silmez isterse id'si aynı olsa bilee !!!
-    //Ama biz değer tip olarak gönderseydik(bool,string,int ,double gibi) ozaman silerdi.
-
-
-    /*
-    Product productToDelete = null;
-    foreach (var p in _products)
-    {
-        if (product.ProductId == p.ProductId)
-        {
-            productToDelete = p;
-        }
-    }
-    _products.Remove(productToDelete);*/
-    //LINQ - Language Integrated Query => Bu yapı ile liste bazlı yapıları SQL gibi sorgulayabiliyoruz.
-    //SingleOrDefault => (foreach) listeyi tek tek dolaşmaya yarar !!!
 }

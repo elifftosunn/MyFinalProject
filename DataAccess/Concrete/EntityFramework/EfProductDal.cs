@@ -50,7 +50,10 @@ namespace DataAccess.Concrete.EntityFramework
 
         public List<Product> GetAllByCategory(int categoryId)
         {
-            throw new NotImplementedException();
+            using (NorthwindContext context=new NorthwindContext())
+            {
+                return context.Set<Product>().Where(p => p.CategoryId == categoryId).ToList();
+            }
         }
 
         public void UpDate(Product entity)

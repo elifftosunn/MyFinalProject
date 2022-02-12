@@ -5,7 +5,7 @@ using Entities.Abstract;
 
 namespace Entities.Concrete
 {
-    //Category bir veritabanı tablosudur.Cünkü IEntity Category class'ının referansını tutabiliyor.
+    
     public class Category:IEntity
     {
         public int CategoryId { get; set; }

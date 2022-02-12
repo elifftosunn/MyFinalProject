@@ -9,7 +9,7 @@ namespace Business.Concrete
 {
     public class ProductManager : IProductService
     {
-        IProductDal _productDal;//soyut nesne ile bağlantı kurduk
+        IProductDal _productDal;
 
         public ProductManager(IProductDal productDal) //constructor
         {
@@ -18,10 +18,8 @@ namespace Business.Concrete
 
         public List<Product> GetAll()
         {
-            // İŞ KODLARI
-            //IProductDal productDal = new IProductDal(); //bu şekilde yazıldığında iş kodlarının tamamı bellekte çalışır. Gerçek veritabanına geçildiği(e-ticaret,sigortacılık,bankacılık uygulamalarında..)  bu kodların hepsinin değiştirilmesi gerekir.
-            //Bir iş sınıfı başka sınıfları NEW LEMEZZ  !!!
-            return _productDal.GetAll(); //Yukarıda yazılan kodlardan şartları geçerse eğer iş koluna diyor ki şartları sağlıyor bana ürünleri verebilirsin.
+            
+            return _productDal.GetAll(); 
         }
 
         public List<Product> GetAllByCategoryId(int categoryId)
